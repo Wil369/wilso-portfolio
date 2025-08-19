@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wilso Annulysse - Entrepreneur & International Business Professional</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1e3c72;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #1e3c72;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            z-index: 2;
+            color: white;
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero .subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.3s forwards;
+            color: #ffd700;
+        }
+
+        .hero .description {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.6s forwards;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.9s forwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            border: 2px solid white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: white;
+            color: #1e3c72;
+            transform: translateY(-2px);
+        }
+
+        .cta-button.secondary {
+            background: rgba(255, 215, 0, 0.2);
+            border-color: #ffd700;
+        }
+
+        .cta-button.secondary:hover {
+            background: #ffd700;
+            color: #1e3c72;
+        }
+
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+            font-size: 3rem;
+        }
+
+        .floating-element:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        .floating-element:nth-child(4) {
+            top: 30%;
+            right: 20%;
+            animation-delay: 1s;
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .section:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #333;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            border-radius: 2px;
+        }
+
+        /* Ventures Section */
+        .ventures-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .venture-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .venture-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .venture-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        }
+
+        .venture-logo {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .venture-card h3 {
+            color: #1e3c72;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .venture-category {
+            color: #ffd700;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .venture-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-text h3 {
+            color: #1e3c72;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .profile-pic {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            font-weight: bold;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(30, 60, 114, 0.3);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            color: #1e3c72;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        /* Experience Section */
+        .experience-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background: #1e3c72;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 4px #1e3c72;
+        }
+
+        .job-title {
+            color: #1e3c72;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .company {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            color: #1e3c72;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #1e3c72;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.4rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .timeline-item::before {
+                display: none;
+            }
+
+            .timeline-item:hover {
+                transform: translateY(-5px);
+            }
+
+            .ventures-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo">Wilso Annulysse</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#ventures">Ventures</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="floating-element">💰</div>
+        <div class="floating-element">🌍</div>
+        <div class="floating-element">🚀</div>
+        <div class="floating-element">📱</div>
+        
+        <div class="hero-content">
+            <h1>Wilso Annulysse</h1>
+            <p class="subtitle">Entrepreneur & Fintech Innovator</p>
+            <p class="description">Passionate entrepreneur and Enrollment Coordinator at Madison College. Part-time at Apple and founder of two early-stage ventures: Tchola (FinTech startup simplifying remittances) and Market Soleil (bringing Caribbean & Afro-Latin goods to the Midwest).</p>
+            <div class="cta-buttons">
+                <a href="#ventures" class="cta-button">Explore My Ventures</a>
+                <a href="#contact" class="cta-button secondary">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ventures Section -->
+    <section id="ventures" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">My Ventures</h2>
+            <div class="ventures-grid">
+                <div class="venture-card fade-in">
+                    <div class="venture-logo">💰</div>
+                    <h3>Tchola</h3>
+                    <div class="venture-category">FinTech Startup</div>
+                    <p class="venture-description">
+                        A revolutionary FinTech platform simplifying remittances and cross-border payments. Making it easier for diaspora communities to send money home while reducing fees and improving accessibility through innovative technology solutions.
+                    </p>
+                </div>
+                
+                <div class="venture-card fade-in">
+                    <div class="venture-logo">🌶️</div>
+                    <h3>Market Soleil</h3>
+                    <div class="venture-category">E-commerce & Cultural Bridge</div>
+                    <p class="venture-description">
+                        Bringing authentic Caribbean & Afro-Latin goods to the Midwest. Creating cultural connections through food, spices, and products that remind diaspora communities of home while introducing new flavors to local markets.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">About Me</h2>
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <h3>Entrepreneur at Heart</h3>
+                    <p>I'm a passionate entrepreneur and dedicated professional with a unique blend of corporate experience and startup innovation. Currently serving as an Enrollment Coordinator at Madison College while working part-time at Apple, I bring a multicultural perspective to everything I do.</p>
+                    
+                    <h3>Building Bridges</h3>
+                    <p>With fluency in English, French, Haitian Creole, and Spanish, I specialize in connecting communities and creating solutions for underserved markets. My ventures focus on addressing real needs in diaspora communities while promoting diversity and inclusion.</p>
+                    
+                    <h3>Vision for Impact</h3>
+                    <p>Through Tchola and Market Soleil, I'm working to bridge financial and cultural gaps, making essential services more accessible and bringing diverse communities together through shared experiences.</p>
+                </div>
+                <div class="about-image fade-in">
+                    <div class="profile-pic">WA</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category fade-in">
+                    <h3>🌐 Languages</h3>
+                    <div class="skill-item">
+                        <span>English</span>
+                        <span>Fluent</span>
+                    </div>
+                    <div class="skill-item">
+                        <span>French</span>
+                        <span>Fluent</span>
+                    </div>
+                    <div class="skill-item">
+                        <span>Haitian Creole</span>
+                        <span>Fluent</span>
+                    </div>
+                    <div class="skill-item">
+                        <span>Spanish</span>
+                        <span>Fluent</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category fade-in">
+                    <h3>🚀 Entrepreneurship</h3>
+                    <div class="skill-item">
+                        <span>Startup Development</span>
+                        <span>Advanced</span>
+                    </div>
+                    <div class="skill-item">
+                        <span>FinTech Innovation</span>
+                        <span>Proficient</span>
+                    </div>
+                    <div class="skill-item">
+                        <span>Market Analysis</span>
+                        <span>Advanced</span>
+                    </div>
+                    <div class="skill-item">
+                        <span>Business Strategy</span>
+                        <span>Advanced</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category fade-in">
+                    <h3>💻 Technical Skills</h3>
+                    <div class="skill-item">
+                        <span>Microsoft Office Suite</span>
+                        <span>Advanced</span>
+                    </div>
+                    <div class="skill-item">
+                        <span>PeopleSoft</span>
+                        <span>Proficient</span>
+                    </div>
+                    <div class="skill-item">
+                        <span>OnBase</span>
+                        <span>Proficient</span>
+                    </div>
+                    <div class="skill-item">
+                        <span>Apple Technology</span>
+                        <span>Advanced</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category fade-in">
+                    <h3>🤝 Professional Skills</h3>
+                    <div class="skill-item">
+                        <span>Customer Service</span>
+                        <span>Expert</span>
+                    </div>
+                    <div class="skill-item">
+                        <span>Cross-Cultural Communication</span>
+                        <span>Expert</span>
+                    </div>
+                    <div class="skill-item">
+                        <span>Problem Solving</span>
+                        <span>Advanced</span>
+                    </div>
+                    <div class="skill-item">
+                        <span>Team Leadership</span>
+                        <span>Advanced</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Professional Journey</h2>
+            <div class="experience-timeline">
+                <div class="timeline-item fade-in">
+                    <div class="job-title">Founder & CEO</div>
+                    <div class="company">Tchola (FinTech Startup) | 2024 - Present</div>
+                    <ul>
+                        <li>Developing innovative FinTech solutions for cross-border remittances</li>
+                        <li>Building technology infrastructure to serve diaspora communities</li>
+                        <li>Securing partnerships and funding for early-stage development</li>
+                        <li>Leading product development and go-to-market strategy</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="job-title">Founder</div>
+                    <div class="company">Market Soleil | 2024 - Present</div>
+                    <ul>
+                        <li>Curating authentic Caribbean & Afro-Latin products for Midwest markets</li>
+                        <li>Building supply chain relationships with international vendors</li>
+                        <li>Developing e-commerce platform and distribution strategy</li>
+                        <li>Creating cultural bridge between diaspora communities and local markets</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="job-title">Enrollment Coordinator</div>
+                    <div class="company">Madison Area Technical College | 2022 - Present</div>
+                    <ul>
+                        <li>Assist current, new, and potential students with integrated enrollment processes</li>
+                        <li>Provide clear summaries of Enrollment Services and college-wide policies</li>
+                        <li>Handle extensive phone and in-person interactions during peak periods</li>
+                        <li>Process documentation using PeopleSoft and OnBase systems</li>
+                        <li>Manage CRM responses and maintain confidential records</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="job-title">Specialist (Part-Time)</div>
+                    <div class="company">Apple - Madison, WI | August 2024 - Present</div>
+                    <ul>
+                        <li>Assist customers in selecting Apple products based on their needs</li>
+                        <li>Demonstrate product features and provide technical support</li>
+                        <li>Collaborate with team members to drive sales during product launches</li>
+                        <li>Stay current with latest Apple technology and services</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="job-title">Purchasing Coordinator</div>
+                    <div class="company">Sound Productions | August 2022 - Present</div>
+                    <ul>
+                        <li>Process purchase orders and manage ERP system updates</li>
+                        <li>Coordinate with Sales, Warehouse, and Vendors for RMAs</li>
+                        <li>Monitor and assign incoming communications</li>
+                        <li>Verify data accuracy and maintain documentation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Let's Connect</h2>
+            <div class="contact-content fade-in">
+                <p>Interested in learning more about my ventures or discussing potential collaborations? I'm always open to connecting with fellow entrepreneurs, investors, and innovators.</p>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <h4>Email</h4>
+                        <p>Wilso.annulysse@gmail.com</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <h4>Phone</h4>
+                        <p>(608) 320-3419</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <h4>Location</h4>
+                        <p>Madison, WI</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">💼</div>
+                        <h4>LinkedIn</h4>
+                        <p><a href="https://www.linkedin.com/in/wilso-annulysse-549406114" style="color: #1e3c72; text-decoration: none;">Connect with me</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Wilso Annulysse. Building bridges, creating opportunities.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add some interactive effects
+        document.querySelectorAll('.venture-card, .skill-category, .timeline-item, .contact-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.boxShadow = '0 25px 60px rgba(30, 60, 114, 0.2)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                if (this.classList.contains('venture-card')) {
+                    this.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.1)';
+                } else {
+                    this.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
+                }
+            });
+        });
+
+        // Add special hover effect for venture cards
+        document.querySelectorAll('.venture-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
